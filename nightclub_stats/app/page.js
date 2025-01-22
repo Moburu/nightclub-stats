@@ -6,10 +6,17 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1 className={styles.header}>Nightclub Stats</h1>
+        <form className={styles.search}>
         <input
-        className={styles.search}
+        className={styles.searchbar}
         placeholder="Search for someone's tag..."
+        >
+        </input>
+        <input
+        className={styles.submit}
+        type="submit"
         ></input>
+        </form>
       </main>
     </div>
   );
