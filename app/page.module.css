@@ -185,6 +185,7 @@ a.secondary {
   padding: 5px;
   font-family: var(--font-geist-sans);
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .searchbar:placeholder-shown {
