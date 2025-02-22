@@ -16,6 +16,17 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.get('/player/:name', async (req, res) => {
+  const { name } = req.params
+  try {
+    const result = await db.query(`SELECT * FROM set WHERE p1_tag = '${name}' OR p2_tag = '${name}'`);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.listen(4000, () => {
   console.log('Server is running on port 4000')
 });

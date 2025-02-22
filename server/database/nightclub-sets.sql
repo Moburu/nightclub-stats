@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.2
 
--- Started on 2025-02-21 13:45:39
+-- Started on 2025-02-22 14:29:16
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -180,7 +180,7 @@ COPY public.set (id, tournament, p1_tag, p2_tag, p1_score, p2_score, winner_tag)
 GRANT SELECT ON TABLE public.set TO read_only;
 
 
--- Completed on 2025-02-21 13:45:39
+-- Completed on 2025-02-22 14:29:17
 
 --
 -- PostgreSQL database dump complete
