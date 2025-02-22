@@ -1,8 +1,15 @@
 'use client'
 
 import Image from "next/image";
+import axios from 'axios';
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation'
+
+const apiCall = () => {
+  axios.get('http://localhost:4000').then((data) => {
+    console.log(data)
+  })
+}
 
 export default function Home() {
 
@@ -10,9 +17,10 @@ export default function Home() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    let playerName = e.target.elements.playerName.value;
-    let slug = '/player/' + playerName;
-    router.push(slug);
+    // let playerName = e.target.elements.playerName.value;
+    // let slug = '/player/' + playerName;
+    // router.push(slug);
+    apiCall();
   }
 
   return (
