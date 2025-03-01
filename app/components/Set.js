@@ -10,7 +10,9 @@ export default function Set(props) {
         p1_score,
         p2_score,
         winner_tag,
-        playerName
+        playerName,
+        round,
+        phase_order
     } = props;
 
     // Use these for conditionals (hero is the player whose page is being displayed)
