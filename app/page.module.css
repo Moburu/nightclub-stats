@@ -172,6 +172,7 @@ a.secondary {
 .header {
   font-size: 48px;
   align-self: center;
+  margin-bottom: 50px;
 }
 
 .search {

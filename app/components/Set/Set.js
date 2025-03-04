@@ -10,9 +10,9 @@ export default function Set(props) {
         p1_score,
         p2_score,
         winner_tag,
-        playerName,
         round,
-        phase_order
+        phase_order,
+        playerName
     } = props;
 
     // Use these for conditionals (hero is the player whose page is being displayed)
@@ -26,7 +26,7 @@ export default function Set(props) {
 
     return (
         <div className={styles.set}>
-            <h1 className={did_hero_win ? styles.winner : styles.loser}>{winner_tag} {winner_score} - {loser_tag} {loser_score}</h1>
+            <h2 className={did_hero_win ? styles.winner : styles.loser}>{winner_tag} {winner_score} - {loser_score} {loser_tag}</h2>
         </div>
     )
 }
