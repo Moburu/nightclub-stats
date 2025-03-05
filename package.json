@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.9",
     "axios": "^1.7.9",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
@@ -21,7 +22,9 @@
     "next": "^15.1.7",
     "node-postgres": "^0.6.2",
     "pg": "^8.13.3",
+    "postcss": "^8.5.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.9"
   }
 }
