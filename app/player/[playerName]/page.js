@@ -3,8 +3,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from "next/navigation"
-import styles from "./page.module.css"
-import Tournament from '@/app/components/Tournament/Tournament';
+import Tournament from '@/components/Tournament';
 
 export default function Player() {
     const { playerName } = useParams();
@@ -41,8 +40,8 @@ export default function Player() {
     }, [])
 
     return (
-        <div className={styles.player_container}>
-            <h1 className={styles.header}>{playerName}</h1>
+        <div className="flex flex-col gap-15 justify-center content-center items-center w-full text-center">
+            <h1 className="text-6xl">{playerName}</h1>
             {(loadingTournaments) ? <p>Loading...</p> :
             tournaments.map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
         </div>

@@ -1,7 +1,6 @@
-import styles from './Tournament.module.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Set from '../Set/Set';
+import Set from './Set';
 
 export default function Tournament(props) {
     // Destructure props
@@ -45,17 +44,40 @@ export default function Tournament(props) {
         getSets(tag, tournament)
     }, [])
 
+    // Source: https://stackoverflow.com/questions/13627308/add-st-nd-rd-and-th-ordinal-suffix-to-a-number
+    // We use this to add the ordinal suffix to the player's placement in order to display it in the tournament header
+    function ordinal_suffix_of(i) {
+        let j = i % 10,
+            k = i % 100;
+        if (j === 1 && k !== 11) {
+            return i + "st";
+        }
+        if (j === 2 && k !== 12) {
+            return i + "nd";
+        }
+        if (j === 3 && k !== 13) {
+            return i + "rd";
+        }
+        return i + "th";
+    }
+
+    const placement_with_ordinal = ordinal_suffix_of(placement);
+
     return (
-        <div className={styles.tournament}>
+        <div className="flex flex-col gap-2 w-1/2 font-fjalla-one font-semibold text-lg">
             {(
                 loadingTournamentInfo ?
                     <p>Loading...</p> :
-                    (<div><h2>{tournamentInfo['name']}</h2><h2>{tournamentInfo['date']} - {tournamentInfo['entrants']} entrants</h2></div>))
-            }
+                    (<div className="grid grid-rows-2">
+                        <h2>{tournamentInfo['name']}</h2>
+                        <h2>{tournamentInfo['date']} - {placement_with_ordinal} / {tournamentInfo['entrants']}</h2>
+                    </div>)
+            )}
+            <hr class="my-12 h-0.5 border-t-0 bg-white/20" />
             {(
                 loadingSets ?
                     <p>Loading ...</p> :
-                    sets.map(set => <Set key={set.id} {...set} playerName={tag}/>)
+                    <div>{sets.map(set => <Set key={set.id} {...set} playerName={tag}/>)}</div>
             )}
         </div>
     )
