@@ -3,9 +3,6 @@
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
   display: grid;
   grid-template-rows: 20px 1fr 20px;
   align-items: center;
@@ -21,9 +18,6 @@
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
   }
 }
 
@@ -167,36 +161,4 @@ a.secondary {
   .logo {
     filter: invert();
   }
-}
-
-.header {
-  font-size: 48px;
-  align-self: center;
-  margin-bottom: 50px;
-}
-
-.search {
-  text-align: center;
-}
-
-.searchbar {
-  width: 100%;
-  height: 40px;
-  font-size: 24px;
-  padding: 5px;
-  font-family: var(--font-geist-sans);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.searchbar:placeholder-shown {
-  font-style: italic;
-}
-
-.submit {
-  width: 25%;
-  height: 40px;
-  font-size: 24px;
-  margin: 10px;
-  font-family: var(--font-geist-sans);
 }

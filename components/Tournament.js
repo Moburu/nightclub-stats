@@ -73,7 +73,7 @@ export default function Tournament(props) {
                         <h2>{tournamentInfo['date']} - {placement_with_ordinal} / {tournamentInfo['entrants']}</h2>
                     </div>)
             )}
-            <hr class="my-12 h-0.5 border-t-0 bg-white/20" />
+            <hr className="h-0.5 border-t-0 bg-white/20" />
             {(
                 loadingSets ?
                     <p>Loading ...</p> :

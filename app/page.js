@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image";
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation'
 
@@ -8,32 +7,34 @@ export default function Home() {
 
   const router = useRouter();
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let playerName = e.target.elements.playerName.value;
-    let slug = '/player/' + playerName;
+    const playerName = e.target.elements.playerName.value.toLowerCase();
+    const slug = '/player/' + playerName;
     router.push(slug);
   }
 
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1 className={styles.header}>Nightclub Stats</h1>
-        <form
-        className={styles.search}
-        onSubmit={handleSubmit}
-        >
-          <input
-          className={styles.searchbar}
-          placeholder="Search for someone's tag..."
-          name = "playerName"
+        <div className="flex flex-col gap-10">
+          <h1 className="text-6xl">Nightclub Stats</h1>
+          <form
+          className="block"
+          onSubmit={handleSubmit}
           >
-          </input>
-          <input
-          className={styles.submit}
-          type="submit"
-          ></input>
-        </form>
+            <input
+            className="rounded-l-md border-2 border-violet-500 w-4/5 text-xl h-10 active:border-violet-500 pl-2"
+            placeholder="Search for someone's tag..."
+            name="playerName"
+            >
+            </input>
+            <input
+            className="w-1/5 text-xl h-10 bg-violet-500 rounded-r-md cursor-pointer"
+            type="submit"
+            ></input>
+          </form>
+        </div>
       </main>
     </div>
   );
