@@ -1,3 +1,5 @@
+// Source for SVGs: https://www.iconfinder.com/
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Set from './Set';
@@ -16,6 +18,7 @@ export default function Tournament(props) {
     const [loadingSets, setLoadingSets] = useState(true);
     const [tournamentInfo, setTournamentInfo] = useState({});
     const [sets, setSets] = useState([]);
+    const [expanded, setExpanded] = useState('hidden');
 
     useEffect(() => {
         const getTournamentInfo = async (slug) => {
@@ -63,6 +66,14 @@ export default function Tournament(props) {
 
     const placement_with_ordinal = ordinal_suffix_of(placement);
 
+    const handleClick = () => {
+        if (expanded === 'hidden') {
+            setExpanded('');
+        } else {
+            setExpanded('hidden');
+        }
+    }
+
     return (
         <div className="flex flex-col gap-2 w-1/2 font-fjalla-one font-semibold text-lg">
             {(
@@ -71,13 +82,20 @@ export default function Tournament(props) {
                     (<div className="grid grid-rows-2">
                         <h2>{tournamentInfo['name']}</h2>
                         <h2>{tournamentInfo['date']} - {placement_with_ordinal} / {tournamentInfo['entrants']}</h2>
+                        <button className="sticky right-0" onClick={handleClick}>
+                            { (expanded === 'hidden') ?
+                                <svg height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M14.83 16.42 24 25.59l9.17-9.17L36 19.25l-12 12-12-12z" fill="#ffffff" class="fill-000000"></path><path d="M0-.75h48v48H0z" fill="none"></path></svg>
+                                :
+                                <svg height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M14.83 30.83 24 21.66l9.17 9.17L36 28 24 16 12 28z" fill="#ffffff" class="fill-000000"></path><path d="M0 0h48v48H0z" fill="none"></path></svg>
+                            }
+                        </button>
                     </div>)
             )}
             <hr className="h-0.5 border-t-0 bg-white/20" />
             {(
                 loadingSets ?
                     <p>Loading ...</p> :
-                    <div>{sets.map(set => <Set key={set.id} {...set} playerName={tag}/>)}</div>
+                    <div className={expanded}>{sets.map(set => <Set key={set.id} {...set} playerName={tag}/>)}</div>
             )}
         </div>
     )

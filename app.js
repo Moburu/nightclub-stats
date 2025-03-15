@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors())
 
-// Set route (all sets)
+// Set routes
 app.get('/sets/:name', async (req, res) => {
   const { name } = req.params;
   try {
@@ -20,8 +20,6 @@ app.get('/sets/:name', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
-// Set route (specific tournament)
 
 app.get('/sets/:name/:slug', async (req, res) => {
   const { name, slug } = req.params;
@@ -39,7 +37,19 @@ app.get('/sets/:name/:slug', async (req, res) => {
   }
 });
 
-// Entrant route
+// Entrant routes
+app.get('/entrants/tags', async (req, res) => {
+  try {
+    const result = await db.query(
+      `SELECT DISTINCT tag, lowercase_tag FROM entrant`
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.get('/entrants/:name', async (req, res) => {
   const { name } = req.params;
   try {
