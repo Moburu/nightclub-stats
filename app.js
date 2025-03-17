@@ -37,6 +37,21 @@ app.get('/sets/:name/:slug', async (req, res) => {
   }
 });
 
+app.get('/sets/:name/season/:season', async (req, res) => {
+  const { name, season } = req.params;
+  try {
+    const result = await db.query(
+      `SELECT * FROM set
+      WHERE (p1_tag = '${name}' OR p2_tag = '${name}')
+      AND season = '${season}'`
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 // Entrant routes
 app.get('/entrants/tags', async (req, res) => {
   try {

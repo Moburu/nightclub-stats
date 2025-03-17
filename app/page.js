@@ -1,6 +1,6 @@
 'use client'
 
-import MySelect from "@/components/MySelect";
+import MySelect from "@/app/components/MySelect";
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
