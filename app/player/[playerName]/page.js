@@ -46,6 +46,7 @@ export default function Player() {
     return (
         <div className="flex flex-col gap-15 justify-center content-center items-center w-full text-center">
             <h1 className="text-6xl">{name}</h1>
+            <h1 className="text-4xl">Recent Tournaments</h1>
             {(loadingTournaments) ? <p>Loading...</p> :
             tournaments.map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
         </div>
