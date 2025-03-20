@@ -30,12 +30,12 @@ export default function Player() {
 
         getTournaments(playerName);
     }, [])
-    console.log(tournaments)
+
     return (
         <div className="flex flex-col gap-15 justify-center content-center items-center w-full text-center">
-            <h1 className="text-4xl">Player Card</h1>
-            <PlayerCard tournaments={tournaments} playerName={playerName} />
             <h1 className="text-6xl">{name}</h1>
+            <h1 className="text-4xl">Player Card</h1>
+            {(loadingTournaments ? <p>Loading...</p> : <PlayerCard tournaments={tournaments} playerName={name} />)}
             <h1 className="text-4xl">Recent Tournaments</h1>
             {(loadingTournaments) ? <p>Loading...</p> :
             tournaments.map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}

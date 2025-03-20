@@ -84,9 +84,9 @@ export default function Tournament(props) {
                         <h2>{tournamentInfo['date']} - {placement_with_ordinal} / {tournamentInfo['entrants']}</h2>
                         <button className="absolute right-0" onClick={handleClick}>
                             { (expanded === 'hidden') ?
-                                <svg height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M14.83 16.42 24 25.59l9.17-9.17L36 19.25l-12 12-12-12z" fill="#ffffff" class="fill-000000"></path><path d="M0-.75h48v48H0z" fill="none"></path></svg>
+                                <svg height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M14.83 16.42 24 25.59l9.17-9.17L36 19.25l-12 12-12-12z" fill="#ffffff" className="fill-000000"></path><path d="M0-.75h48v48H0z" fill="none"></path></svg>
                                 :
-                                <svg height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M14.83 30.83 24 21.66l9.17 9.17L36 28 24 16 12 28z" fill="#ffffff" class="fill-000000"></path><path d="M0 0h48v48H0z" fill="none"></path></svg>
+                                <svg height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M14.83 30.83 24 21.66l9.17 9.17L36 28 24 16 12 28z" fill="#ffffff" className="fill-000000"></path><path d="M0 0h48v48H0z" fill="none"></path></svg>
                             }
                         </button>
                     </div>)

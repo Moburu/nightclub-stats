@@ -70,8 +70,7 @@ app.get('/entrants/:name', async (req, res) => {
   try {
     const result = await db.query(
       `SELECT * FROM entrant
-      WHERE lowercase_tag = '${name}'
-      LIMIT 5`
+      WHERE lowercase_tag = '${name}'`
     );
     res.json(result.rows);
   } catch (err) {
