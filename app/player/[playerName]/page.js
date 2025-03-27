@@ -38,7 +38,7 @@ export default function Player() {
             {(loadingTournaments ? <p>Loading...</p> : <PlayerCard tournaments={tournaments} playerName={name} />)}
             <h1 className="text-4xl">Recent Tournaments</h1>
             {(loadingTournaments) ? <p>Loading...</p> :
-            tournaments.map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
+            tournaments.slice(0, 3).map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
         </div>
     )
 }
