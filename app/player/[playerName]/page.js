@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from "next/navigation"
 import Tournament from '@/app/components/Tournament';
 import PlayerCard from '@/app/components/PlayerCard';
+import LoadingSpinner from '@/app/components/LoadingSpinner';
 
 export default function Player() {
     const router = useRouter();
@@ -34,11 +35,17 @@ export default function Player() {
     return (
         <div className="flex flex-col gap-15 justify-center content-center items-center w-full text-center">
             <h1 className="text-6xl">{name}</h1>
-            <h1 className="text-4xl">Player Card</h1>
-            {(loadingTournaments ? <p>Loading...</p> : <PlayerCard tournaments={tournaments} playerName={name} />)}
-            <h1 className="text-4xl">Recent Tournaments</h1>
-            {(loadingTournaments) ? <p>Loading...</p> :
-            tournaments.slice(0, 3).map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
+            {loadingTournaments ?
+            <LoadingSpinner />
+            :
+            <div className="flex flex-col gap-15 justify-center content-center items-center w-full text-center">
+                <h1 className="text-4xl">Player Card</h1>
+                <PlayerCard tournaments={tournaments} playerName={name} />
+                <h1 className="text-4xl">Recent Tournaments</h1>
+                {tournaments.slice(0, 3).map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
+                <h1 className="text-4xl">Graphs</h1>
+                
+            </div>}
         </div>
     )
 }
