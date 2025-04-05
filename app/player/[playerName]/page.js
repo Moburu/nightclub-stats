@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation"
 import Tournament from '@/app/components/Tournament';
 import PlayerCard from '@/app/components/PlayerCard';
 import LoadingSpinner from '@/app/components/LoadingSpinner';
+import LineGraph from '@/app/components/LineGraph';
 
 export default function Player() {
     const router = useRouter();
@@ -44,7 +45,7 @@ export default function Player() {
                 <h1 className="text-4xl">Recent Tournaments</h1>
                 {tournaments.slice(0, 3).map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
                 <h1 className="text-4xl">Graphs</h1>
-                
+                <LineGraph tournaments={tournaments} playerName={name} />
             </div>}
         </div>
     )

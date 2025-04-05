@@ -10,7 +10,7 @@ export default function PlayerCard(props) {
     const filteredTournaments = tournaments.filter(tournament => tournament.season !== 0);
 
     // Source: https://stackoverflow.com/questions/15125920/how-to-get-distinct-values-from-an-array-of-objects-in-javascript
-    const uniqueSeasons = [...new Set(filteredTournaments.map(tournament => tournament.season))];
+    const uniqueSeasons = [...new Set(filteredTournaments.map(tournament => tournament.season))].sort((a, b) => (a-b));
 
     useEffect(() => {
         const getStats = async (tournaments, seasons, playerName) => {
