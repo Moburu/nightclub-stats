@@ -29,11 +29,27 @@ export default function LineGraph(props) {
                 x: {
                     ticks: {
                         color: 'white'
+                    },
+                    grid: {
+                        color: 'rgb(71, 71, 71)'
+                    },
+                    title: {
+                        display: true,
+                        text: "Tournament",
+                        color: 'white'
                     }
                 },
                 y: {
                     reverse: true,
                     ticks: {
+                        color: 'white'
+                    },
+                    grid: {
+                        color: 'rgb(71, 71, 71)'
+                    },
+                    title: {
+                        display: true,
+                        text: "Placement",
                         color: 'white'
                     }
                 }
@@ -64,9 +80,20 @@ export default function LineGraph(props) {
                 ...options,
                 scales: {
                     ...options.scales,
+                    x: {
+                        ...options.scales.x,
+                        title: {
+                            ...options.scales.x.title,
+                            text: "Tournament"
+                        }
+                    },
                     y: {
                         ...options.scales.y,
-                        reverse: true
+                        reverse: true,
+                        title: {
+                            ...options.scales.y.title,
+                            text: "Placement"
+                        }
                     }
                 },
                 plugins: {
@@ -85,9 +112,20 @@ export default function LineGraph(props) {
                 ...options,
                 scales: {
                     ...options.scales,
+                    x: {
+                        ...options.scales.x,
+                        title: {
+                            ...options.scales.x.title,
+                            text: "Tournament"
+                        }
+                    },
                     y: {
                         ...options.scales.y,
-                        reverse: false
+                        reverse: false,
+                        title: {
+                            ...options.scales.y.title,
+                            text: "SPR"
+                        }
                     }
                 },
                 plugins: {
@@ -106,9 +144,20 @@ export default function LineGraph(props) {
                 ...options,
                 scales: {
                     ...options.scales,
+                    x: {
+                        ...options.scales.x,
+                        title: {
+                            ...options.scales.x.title,
+                            text: "Season"
+                        }
+                    },
                     y: {
                         ...options.scales.y,
-                        reverse: true
+                        reverse: true,
+                        title: {
+                            ...options.scales.y.title,
+                            text: "Average Placement"
+                        }
                     }
                 },
                 plugins: {
@@ -127,9 +176,20 @@ export default function LineGraph(props) {
                 ...options,
                 scales: {
                     ...options.scales,
+                    x: {
+                        ...options.scales.x,
+                        title: {
+                            ...options.scales.x.title,
+                            text: "Season"
+                        }
+                    },
                     y: {
                         ...options.scales.y,
-                        reverse: false
+                        reverse: false,
+                        title: {
+                            ...options.scales.y.title,
+                            text: "Average SPR"
+                        }
                     }
                 },
                 plugins: {
