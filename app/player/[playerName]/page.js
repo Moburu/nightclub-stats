@@ -21,11 +21,13 @@ export default function Player() {
         const getTournaments = async (name) => {
             try {
                 const response = await axios.get(`http://localhost:4000/entrants/${name}`).then((data) => data);
+                // Separate data set to remove DQd tournaments
                 const filteredData = response.data.filter(tourney => tourney.is_dq === 'False');
                 setTournaments(response.data);
                 setFilteredTournaments(filteredData);
                 setName(response.data[0].tag);
             } catch (error) {
+                // Redirect user to homepage
                 console.error(error);
                 router.push('/');
             } finally {

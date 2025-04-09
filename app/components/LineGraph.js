@@ -72,6 +72,7 @@ export default function LineGraph(props) {
             }
         })
 
+        // Functions to change chart dataset
         const placementMode = () => {
             setData(placementData);
             setOptions({
@@ -103,7 +104,6 @@ export default function LineGraph(props) {
                 }
             });
         }
-
         const sprMode = () => {
             setData(sprData);
             setOptions({
@@ -135,7 +135,6 @@ export default function LineGraph(props) {
                 }
             })
         }
-
         const avgPlacementMode = () => {
             setData(avgPlacementData);
             setOptions({
@@ -167,7 +166,6 @@ export default function LineGraph(props) {
                 }
             })
         }
-
         const avgSprMode = () => {
             setData(avgSprData);
             setOptions({
@@ -220,6 +218,7 @@ export default function LineGraph(props) {
             const getStats = async (tournaments, seasons, playerName) => {
                 let dataHolder = [];
 
+                // Calc stats for each season
                 for (let i = 0; i < seasons.length; i++) {
                     let currentTournaments = tournaments.filter((tournament => tournament.season === seasons[i]))
 
@@ -231,6 +230,7 @@ export default function LineGraph(props) {
                 const placingBySeason = dataHolder.map(season => season.avgPlacement)
                 const sprBySeason = dataHolder.map(season => season.avgSpr);
 
+                // Objects to plug into Chart.js
                 const avgPlacementObject = {
                     labels: uniqueSeasons,
                     datasets: [
@@ -241,7 +241,6 @@ export default function LineGraph(props) {
                         }
                     ]
                 }
-
                 const avgSprObject = {
                     labels: uniqueSeasons,
                     datasets: [
@@ -256,18 +255,14 @@ export default function LineGraph(props) {
                 setAvgPlacementData(avgPlacementObject);
                 setAvgSprData(avgSprObject);
 
-                const sortedTournaments = tournaments.sort((a, b) => {
-                    if (a.season === b.season) {
-                        return a.episode - b.episode
-                    } else {
-                        return a.season - b.season
-                    }
-                })
-
-                const seasonsArray = sortedTournaments.map(tournament => `S${tournament.season}E${tournament.epsiode}`)
+                // Sort tournaments by season and episode (ascending) for x-axis purposes
+                const sortedTournaments = tournaments.sort((a, b) => a.season - b.season || a.episode - b.episode)
+                console.log(sortedTournaments);
+                const seasonsArray = sortedTournaments.map(tournament => `S${tournament.season}E${tournament.episode}`)
                 const placements = sortedTournaments.map(tournament => tournament.placement);
                 const sprs = sortedTournaments.map(tournament => tournament.spr);
 
+                // Objects to plug into Chart.js
                 const placementObject = {
                     labels: seasonsArray,
                     datasets: [
@@ -278,7 +273,6 @@ export default function LineGraph(props) {
                         }
                     ]
                 }
-
                 const sprObject = {
                     labels: seasonsArray,
                     datasets: [
@@ -294,6 +288,7 @@ export default function LineGraph(props) {
                 setPlacementData(placementObject);
                 setSprData(sprObject);
 
+                // Start the chart on placement by tournament
                 setData(placementObject);
             }
 
