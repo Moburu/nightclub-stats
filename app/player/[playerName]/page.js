@@ -12,7 +12,8 @@ export default function Player() {
     const router = useRouter();
     const { playerName } = useParams();
     const [tournaments, setTournaments] = useState([]);
-    const [name, setName] = useState("")
+    const [filteredTournaments, setFilteredTournaments] = useState([]);
+    const [name, setName] = useState("");
     const [loadingTournaments, setLoadingTournaments] = useState(true);
 
     // Fetch sets from our database when page loads
@@ -20,8 +21,10 @@ export default function Player() {
         const getTournaments = async (name) => {
             try {
                 const response = await axios.get(`http://localhost:4000/entrants/${name}`).then((data) => data);
-                setTournaments(response.data)
-                setName(response.data[0].tag)
+                const filteredData = response.data.filter(tourney => tourney.is_dq === 'False');
+                setTournaments(response.data);
+                setFilteredTournaments(filteredData);
+                setName(response.data[0].tag);
             } catch (error) {
                 console.error(error);
                 router.push('/');
@@ -41,11 +44,11 @@ export default function Player() {
             :
             <div className="flex flex-col gap-15 justify-center content-center items-center w-full text-center">
                 <h1 className="text-4xl">Player Card</h1>
-                <PlayerCard tournaments={tournaments} playerName={name} />
+                <PlayerCard tournaments={filteredTournaments} playerName={name} />
                 <h1 className="text-4xl">Recent Tournaments</h1>
                 {tournaments.slice(0, 3).map((tournament) => <Tournament key={tournament.id} {...tournament}/>)}
                 <h1 className="text-4xl">Graphs</h1>
-                <LineGraph tournaments={tournaments} playerName={name} />
+                <LineGraph tournaments={filteredTournaments} playerName={name} />
             </div>}
         </div>
     )

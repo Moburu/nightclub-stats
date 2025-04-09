@@ -61,9 +61,7 @@ export default function LineGraph(props) {
                     text: "Tournament Placements"
                 },
                 legend: {
-                    labels: {
-                        color: 'white'
-                    }
+                    display: false
                 }
             },
             elements: {
