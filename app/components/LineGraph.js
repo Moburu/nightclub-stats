@@ -304,10 +304,10 @@ export default function LineGraph(props) {
             :
             <div>
                 <div className="flex flex-row content-center justify-center gap-2 mb-5">
-                    <button onClick={placementMode}>Placement</button>
-                    <button onClick={sprMode}>SPR</button>
-                    <button onClick={avgPlacementMode}>Avg Placement</button>
-                    <button onClick={avgSprMode}>Avg SPR</button>
+                    <button onClick={placementMode} className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" style={{'backgroundColor': 'rgb(110, 41, 230)'}}>Placement</button>
+                    <button onClick={sprMode} className="focus:outline-none text-white hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" style={{'backgroundColor': 'rgb(110, 41, 230)'}}>SPR</button>
+                    <button onClick={avgPlacementMode} className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" style={{'backgroundColor': 'rgb(110, 41, 230)'}}>Avg Placement</button>
+                    <button onClick={avgSprMode} className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" style={{'backgroundColor': 'rgb(110, 41, 230)'}}>Avg SPR</button>
                 </div>
                 <Line options={options} data={data} />
             </div>

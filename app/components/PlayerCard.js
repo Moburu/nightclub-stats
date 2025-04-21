@@ -31,12 +31,12 @@ export default function PlayerCard(props) {
     }, [])
 
     return (
-        <div className="w-[50%] overflow-x-auto rounded-md border-2 border-violet-950">
+        <div className="w-[50%] overflow-x-auto rounded-md border-2" style={{'borderColor': 'rgb(110, 41, 230)'}}>
             {
                 loading ? <p>Loading...</p> :
                 (
                     <table className="w-full text-l text-left rtl:text-right text-gray-400 rounded-sm">
-                        <thead className="text-m text-gray-400 uppercase bg-violet-950">
+                        <thead className="text-m text-gray-200 uppercase" style={{'backgroundColor': 'rgb(110, 41, 230)'}}>
                             <tr>
                                 <th>Season</th>
                                 <th>TE</th>

@@ -14,7 +14,7 @@ export default function MySelect(props) {
           ...provided,
           backgroundColor: '#333',
           color: '#fff',
-          border: state.isFocused ? '1px solid white' : '1px solid rgb(171, 62, 255)',
+          border: state.isFocused ? '1px solid white' : '1px solid rgb(110, 41, 230)',
           boxShadow: 'none',
           '&:hover': {
           border: '1px solid white',

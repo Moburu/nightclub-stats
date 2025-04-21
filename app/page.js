@@ -44,7 +44,7 @@ export default function Home() {
       setActive('');
       setTimeout(function() {
         setActive('transition-opacity duration-2000 opacity-0');
-      }, 2000);
+      }, 1000);
     }
   }
 
@@ -62,7 +62,8 @@ export default function Home() {
           >
             <MySelect entrants={entrants} />
             <input
-            className="w-1/5 text-xl h-[41.5px] bg-[#ab3eff] rounded-r-md cursor-pointer"
+            className="w-1/5 text-xl h-[41.5px] rounded-r-md cursor-pointer"
+            style={{'backgroundColor': 'rgb(110, 41, 230)'}}
             type="submit"
             ></input>
           </form>
