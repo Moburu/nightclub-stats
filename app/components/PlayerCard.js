@@ -39,14 +39,18 @@ export default function PlayerCard(props) {
                         <thead className="text-m text-gray-200 uppercase" style={{'backgroundColor': 'rgb(110, 41, 230)'}}>
                             <tr>
                                 <th>Season</th>
-                                <th>TE</th>
-                                <th>W</th>
-                                <th>L</th>
-                                <th>WR</th>
-                                <th>AP</th>
-                                <th>ASPR</th>
-                                <th>T16s</th>
-                                <th>T8s</th>
+                                <th className="underline decoration-dotted">
+                                    <div className="tooltip tooltip-open" data-tip="Tournaments Entered">
+                                        <span>TE</span>
+                                    </div>
+                                </th>
+                                <th className="underline decoration-dotted">W</th>
+                                <th className="underline decoration-dotted">L</th>
+                                <th className="underline decoration-dotted">WR</th>
+                                <th className="underline decoration-dotted">AP</th>
+                                <th className="underline decoration-dotted">ASPR</th>
+                                <th className="underline decoration-dotted">T16</th>
+                                <th className="underline decoration-dotted">T8</th>
                             </tr>
                         </thead>
                         <tbody>

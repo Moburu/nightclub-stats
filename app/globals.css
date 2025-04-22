@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
 
 @theme {
   --font-roboto-condensed: "Roboto Condensed", sans-serif;

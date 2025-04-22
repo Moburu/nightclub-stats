@@ -256,8 +256,7 @@ export default function LineGraph(props) {
                 setAvgSprData(avgSprObject);
 
                 // Sort tournaments by season and episode (ascending) for x-axis purposes
-                const sortedTournaments = tournaments.sort((a, b) => a.season - b.season || a.episode - b.episode)
-                console.log(sortedTournaments);
+                const sortedTournaments = filteredTournaments.sort((a, b) => a.season - b.season || a.episode - b.episode)
                 const seasonsArray = sortedTournaments.map(tournament => `S${tournament.season}E${tournament.episode}`)
                 const placements = sortedTournaments.map(tournament => tournament.placement);
                 const sprs = sortedTournaments.map(tournament => tournament.spr);
