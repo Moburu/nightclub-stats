@@ -1,4 +1,4 @@
-import axios from 'axios'
+import supabase from './client';
 
 // Tournaments should be length of tournaments array
 
@@ -61,14 +61,18 @@ const calcTop8s = (tournaments) => {
 }
 
 const getSets = async (name, season) => {
-    const response = await axios.get(`http://localhost:4000/sets/${name}/season/${season}`).then((data) => data).catch(err => {
-        console.log(err)
-    })
-    return response.data;
+    const { data, error } = await supabase
+        .from('set').select()
+        .eq('season', `${season}`)
+        .or(`p1_tag.eq.${name},p2_tag.eq.${name}`);
+    return data;
 }
 
 export const calcSeasonStats = async (tournaments, season, playerName) => {
-    const sets = await getSets(playerName, season).then(result => result).catch(err => {
+    const sets = await getSets(playerName, season).then(result => {
+        console.log(result)
+        return result
+    }).catch(err => {
         console.log(err);
     });
     const attendance = tournaments.length;

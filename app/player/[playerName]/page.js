@@ -1,6 +1,6 @@
 'use client'
 
-import axios from 'axios';
+import supabase from '@/app/client';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from "next/navigation"
 import Tournament from '@/app/components/Tournament';
@@ -20,12 +20,15 @@ export default function Player() {
     useEffect(() => {
         const getTournaments = async (name) => {
             try {
-                const response = await axios.get(`http://localhost:4000/entrants/${name}`).then((data) => data);
+                const { data, error } = await supabase
+                    .from('entrant')
+                    .select()
+                    .eq('lowercase_tag', `${name}`);
                 // Separate data set to remove DQd tournaments
-                const filteredData = response.data.filter(tourney => tourney.is_dq === 'False');
-                setTournaments(response.data);
+                const filteredData = data.filter(tourney => tourney.is_dq === 'False');
+                setTournaments(data);
                 setFilteredTournaments(filteredData);
-                setName(response.data[0].tag);
+                setName(data[0].tag);
             } catch (error) {
                 // Redirect user to homepage
                 console.error(error);

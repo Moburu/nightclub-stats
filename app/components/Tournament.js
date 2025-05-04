@@ -1,8 +1,8 @@
 // Source for SVGs: https://www.iconfinder.com/
 
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Set from './Set';
+import supabase from '../client';
 
 export default function Tournament(props) {
     // Destructure props
@@ -23,8 +23,11 @@ export default function Tournament(props) {
     useEffect(() => {
         const getTournamentInfo = async (slug) => {
             try {
-                const response = await axios.get(`http://localhost:4000/tournaments/${slug}`).then((data) => data);
-                setTournamentInfo(response.data[0]);
+                const { data, error } = await supabase
+                    .from('tournament')
+                    .select()
+                    .eq('slug', `${slug}`);
+                setTournamentInfo(data[0]);
             } catch (error) {
                 console.error(error);
             } finally {
@@ -34,8 +37,14 @@ export default function Tournament(props) {
 
         const getSets = async (name, slug) => {
             try {
-                const response = await axios.get(`http://localhost:4000/sets/${name}/${slug}`).then((data) => data);
-                setSets(response.data);
+                const { data, error } = await supabase
+                    .from('set')
+                    .select()
+                    .eq('tournament', `${slug}`)
+                    .or(`p1_tag.eq.${name},p2_tag.eq.${name}`)
+                    .order('phase_order')
+                    .order('round');
+                setSets(data);
             } catch (error) {
                 console.error(error);
             } finally {

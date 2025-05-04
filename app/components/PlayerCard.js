@@ -22,6 +22,7 @@ export default function PlayerCard(props) {
                     dataHolder.push(response);
                 });
             }
+            console.log(dataHolder)
             setData(dataHolder)
         }
 

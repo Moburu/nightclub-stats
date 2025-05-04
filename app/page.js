@@ -4,8 +4,7 @@ import MySelect from "@/app/components/MySelect";
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
-import axios from 'axios';
-import Select from "react-select";
+import supabase from "./client";
 
 export default function Home() {
   const router = useRouter();
@@ -18,8 +17,7 @@ export default function Home() {
   useEffect(() => {
     const getEntrants = async () => {
       try {
-          const response = await axios.get(`http://localhost:4000/entrants/tags`).then((data) => data);
-          const data = response.data;
+          const { data } = await supabase.from('unique_entrants').select();
           for (let i = 0; i < data.length; i++) {
             entrantsHolder.push({'value': data[i].tag, 'label': data[i].tag});
             lowercaseEntrantsHolder.push(data[i].lowercase_tag);
@@ -56,7 +54,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div className="flex flex-col gap-10 w-110">
-          <h1 className="text-6xl">Nightclub Stats</h1>
+          <h1 className="text-6xl">NYCMelee Stats</h1>
           <form
           onSubmit={handleSubmit}
           >
