@@ -25,7 +25,7 @@ export default function Player() {
                     .select()
                     .eq('lowercase_tag', `${name}`);
                 // Separate data set to remove DQd tournaments
-                const filteredData = data.filter(tourney => tourney.is_dq === 'False');
+                const filteredData = data.filter(tourney => tourney.is_dq === false);
                 setTournaments(data);
                 setFilteredTournaments(filteredData);
                 setName(data[0].tag);
